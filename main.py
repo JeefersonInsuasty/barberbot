@@ -1,14 +1,12 @@
 from fastapi import FastAPI
 from fastapi.responses import HTMLResponse
+from routes import cita
 
-# Estamos creando una instancia de la clase FastAPI
 app = FastAPI()
-
-# Cambios a la documentacion
-app.title = "La super API" 
+app.title = "BarberBOT" 
 app.version = "1.0.0"
+app.include_router(cita.router)
 
-# Ahora crearemos nuestro primer endpoint 
-@app.get("/", tags=['home']) # Aqui se agrega la ruta de inicio
+@app.get("/", tags=['Inicio'])
 def message():
-    return HTMLResponse(content="<h1> Bienvenido a mi API </h1>")
+    return HTMLResponse(content="<h1> Bienvenido a BarberBOT</h1>")
